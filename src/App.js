@@ -9,6 +9,7 @@ class App extends React.Component {
       searchTerm: '',
       resultList: [],
       afterSearch: false,
+      keywords:[],
     };
   }
   render() {
@@ -29,7 +30,7 @@ class App extends React.Component {
   _search() {
     const text = this.state.searchTerm;
     console.log(text);
-    fetch('http://ec2-18-222-31-66.us-east-2.compute.amazonaws.com:8983/solr/norconex/select?q=title:' + text + '^3 description:' + text + '^2 content:' + text + "&hl.fl=title description&hl.simple.post=</span>&hl.simple.pre=<span style=\"font-weight:bold\">&hl=on&hl.fragsize=0")
+    fetch('http://ec2-3-15-172-36.us-east-2.compute.amazonaws.com:8983/solr/norconex/select?q=title:' + text + '^3 description:' + text + '^2 content:' + text + "&hl.fl=title description&hl.simple.post=</span>&hl.simple.pre=<span style=\"font-weight:bold\">&hl=on&hl.fragsize=0")
       .then(res => res.json())
       .then((result) => {
         const _docs = result.response.docs
